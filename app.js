@@ -51,13 +51,13 @@ app.get('/users', user.list);
 var io = require('socket.io').listen(app.listen(3000));
 // var io = require('socket.io').listen(app);
 
-// io.socket.on('connection', function(socket) {
-//     log('connected');
-//     socket.on('msg send', function(msg) {
-//         socket.emit('msg push', msg);
-//         socket.broadcast.emit('msg push', msg);
-//     } );
-//     socket.on('disconnect', function() {
-//         log('disconnected');
-//     } );
-// } );
+io.sockets.on('connection', function(socket) {
+    console.log('server connected');
+    socket.on('msg send', function(msg) {
+        socket.emit('msg push', msg);
+        socket.broadcast.emit('msg push', msg);
+    } );
+    socket.on('disconnect', function() {
+        console.log('disconnected');
+    } );
+} );

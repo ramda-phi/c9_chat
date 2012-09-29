@@ -1,9 +1,6 @@
 window.onload = function() {
-    console.log('window onload.');
-    logDiv = document.getElementById('log');
+    logDiv = document.getElementById("log");
 }
-
-console.log('come');
 
 var logDiv;
 var log = function() {
@@ -13,7 +10,7 @@ var log = function() {
 var socket = io.connect('http://localhost');
 
 socket.on( 'connect', function() {
-    log('connected');
+    log('client connected');
     socket.emit('msg send', 'data');
     socket.on('msg push', function(msg) {
         log(msg);
@@ -21,7 +18,6 @@ socket.on( 'connect', function() {
 } );
 
 function ping(){
-    console.log('ping');
-    var text = document.getElementById('text').value;
+    var text = document.getElementById("text").value;
     socket.emit('msg send', text);
 }
