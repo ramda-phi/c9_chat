@@ -27,9 +27,37 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// Routes
+
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'Express'
+  });
+});
+
+//app.listen(3000);
+// console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
+// http.createServer(app).listen(app.get('port'), function(){
+//   console.log("Express server listening on port " + app.get('port'));
+// });
+
+
+// socket.io
+
+var io = require('socket.io').listen(app.listen(3000));
+// var io = require('socket.io').listen(app);
+
+// io.socket.on('connection', function(socket) {
+//     log('connected');
+//     socket.on('msg send', function(msg) {
+//         socket.emit('msg push', msg);
+//         socket.broadcast.emit('msg push', msg);
+//     } );
+//     socket.on('disconnect', function() {
+//         log('disconnected');
+//     } );
+// } );

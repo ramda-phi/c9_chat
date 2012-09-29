@@ -2,8 +2,8 @@ var express = require('express');
 var app = express.createServer();
 
 app.configure( function() {
-    app.use( express.static( __dirname + '/ex45') );
+    app.use( express.static( __dirname + '/wise9') );
 });
 
-app.listen(3001);
+app.listen(3002);
 console.log('Server started.');
